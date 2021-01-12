@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 // require("turbolinks").start() ←javaの動作の妨げになる可能性あり
 require("@rails/activestorage").start()
 require("channels")
+require("../price");
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
