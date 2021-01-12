@@ -34,7 +34,7 @@ RSpec.describe Item, type: :model do
     it 'カテゴリー情報が1だと保存できない' do
       @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be other than 1")
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
     it '商品の状態についての情報が空の場合、保存できない' do
       @item.status_id = nil
@@ -44,7 +44,7 @@ RSpec.describe Item, type: :model do
     it '商品の状態についての情報が1だと保存できない' do
       @item.status_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Status must be other than 1")
+      expect(@item.errors.full_messages).to include('Status must be other than 1')
     end
     it '配送料の負担についての情報が空の場合、保存できない' do
       @item.shipping_charge_id = nil
@@ -54,7 +54,7 @@ RSpec.describe Item, type: :model do
     it '配送料の負担についての情報が1だと保存できない' do
       @item.shipping_charge_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping charge must be other than 1")
+      expect(@item.errors.full_messages).to include('Shipping charge must be other than 1')
     end
     it '発送元の地域についての情報が空の場合、保存できない' do
       @item.ship_to_area_id = nil
@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
     it '発送元の地域についての情報が1だと保存できない' do
       @item.ship_to_area_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Ship to area must be other than 1")
+      expect(@item.errors.full_messages).to include('Ship to area must be other than 1')
     end
     it '発送までの日数についての情報が空の場合、保存できない' do
       @item.ship_to_day_id = nil
@@ -74,7 +74,7 @@ RSpec.describe Item, type: :model do
     it '発送までの日数についての情報が1だと保存できない' do
       @item.ship_to_day_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Ship to day must be other than 1")
+      expect(@item.errors.full_messages).to include('Ship to day must be other than 1')
     end
     it '価格についての情報が空の場合、保存できない' do
       @item.price = nil
