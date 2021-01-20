@@ -25,21 +25,21 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     it 'postcodeが全角数字の場合購入できない' do
-      @order_address.postcode = "１２３-４５６７"
+      @order_address.postcode = '１２３-４５６７'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postcode is invalid")
+      expect(@order_address.errors.full_messages).to include('Postcode is invalid')
     end
 
     it 'postcodeが-なしの場合購入できない' do
-      @order_address.postcode = "1234567"
+      @order_address.postcode = '1234567'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postcode is invalid")
+      expect(@order_address.errors.full_messages).to include('Postcode is invalid')
     end
 
     it 'postcodeが-の位置が違う場合購入できない' do
-      @order_address.postcode = "1-234567"
+      @order_address.postcode = '1-234567'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postcode is invalid")
+      expect(@order_address.errors.full_messages).to include('Postcode is invalid')
     end
 
     it 'ship_to_area_idが空の場合購入できない' do
@@ -51,7 +51,7 @@ RSpec.describe OrderAddress, type: :model do
     it 'ship_to_area_idが1の場合購入できない' do
       @order_address.ship_to_area_id = 1
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Ship to area must be other than 1")
+      expect(@order_address.errors.full_messages).to include('Ship to area must be other than 1')
     end
 
     it 'cityが空の場合購入できない' do
@@ -73,27 +73,27 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     it 'phone_numberが全角数字の場合購入できない' do
-      @order_address.phone_number = "１２３４５６７８９０１"
+      @order_address.phone_number = '１２３４５６７８９０１'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
 
     it 'phone_numberの桁数が11桁より少ない場合購入できない' do
-      @order_address.phone_number = 1234567890
+      @order_address.phone_number = 1_234_567_890
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
 
     it 'phone_numberの桁数が11桁より多い場合購入できない' do
-      @order_address.phone_number = 123456789012
+      @order_address.phone_number = 123_456_789_012
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
 
     it 'phone_numberに-が含まれている場合購入できない' do
-      @order_address.phone_number = 123-4567-8901
+      @order_address.phone_number = 123 - 4567 - 8901
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
   end
 end
