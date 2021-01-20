@@ -6,7 +6,7 @@ RSpec.describe OrderAddress, type: :model do
   end
 
   context '購入できる場合' do
-    it 'postcode, ship_to_area_id, city, block, phone_number, tokenが存在すれば保存できる' do
+    it 'postcode, ship_to_area_id, city, block, phone_number, token, user_id, item_idが存在すれば保存できる' do
       expect(@order_address).to be_valid
     end
   end
@@ -78,6 +78,12 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
 
+    it 'phone_numberが英数混合の場合購入できない' do
+      @order_address.phone_number = '1a234567890'
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include('Phone number is invalid')
+    end
+
     it 'phone_numberの桁数が11桁より少ない場合購入できない' do
       @order_address.phone_number = 1_234_567_890
       @order_address.valid?
@@ -95,5 +101,16 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('Phone number is invalid')
     end
+    it 'user_idが空の場合購入できない' do
+      @order_address.user_id = nil
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'item_idが空の場合購入できない' do
+      @order_address.item_id = nil
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Item can't be blank")
+    end
+
   end
 end

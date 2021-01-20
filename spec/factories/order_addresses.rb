@@ -6,5 +6,7 @@ FactoryBot.define do
     block { '木月3-18-10' }
     phone_number { 12_345_678_901 }
     token { 'sk_test_a1a1a1a1a1a1a1a1a1a1' }
+    user_id { 1 }
+    item_id { 1 }
   end
 end
