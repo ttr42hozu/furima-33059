@@ -2,11 +2,18 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   before do
-    @order_address = FactoryBot.build(:order_address)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @order_address = FactoryBot.build(:order_address, user_id: user.id, item_id: item.id)
   end
 
   context '購入できる場合' do
     it 'postcode, ship_to_area_id, city, block, phone_number, token, user_id, item_idが存在すれば保存できる' do
+      expect(@order_address).to be_valid
+    end
+
+    it 'buildingが空でも購入できる' do
+      @order_address.building = nil
       expect(@order_address).to be_valid
     end
   end
